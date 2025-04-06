@@ -1,0 +1,10 @@
+int greater(int[] arr) {
+    int count = 1, maxSoFar = arr[0];
+    for (int i = 1; i < arr.length; i++) {
+        if (arr[i] > maxSoFar) {
+            count++;
+            maxSoFar = arr[i];
+        }
+    }
+    return count;
+}
