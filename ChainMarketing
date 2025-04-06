@@ -1,0 +1,28 @@
+import java.util.*;
+
+public class ChainMarketing {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String parent = sc.nextLine().trim();
+        String hasChildren = sc.nextLine().trim().toUpperCase();
+        double schemeAmount = 5000;
+        Map<String, Double> commission = new LinkedHashMap<>();
+
+        if (hasChildren.equals("N")) {
+            commission.put(parent, schemeAmount * 0.05);
+        } else if (hasChildren.equals("Y")) {
+            String childrenLine = sc.nextLine().trim();
+            String[] children = childrenLine.split(",");
+            commission.put(parent, children.length * schemeAmount * 0.10);
+            for (String child : children) {
+                commission.put(child.trim(), schemeAmount * 0.05);
+            }
+        }
+
+        System.out.println("TOTAL MEMBERS:" + commission.size());
+        System.out.println("COMISSION DETAILS");
+        for (Map.Entry<String, Double> entry : commission.entrySet()) {
+            System.out.println(entry.getKey() + ": " + Math.round(entry.getValue()) + " INR");
+        }
+    }
+}
