@@ -1,0 +1,8 @@
+int maxGuests(int[] entry, int[] exit) {
+    int current = 0, max = 0;
+    for (int i = 0; i < entry.length; i++) {
+        current += entry[i] - exit[i];
+        max = Math.max(max, current);
+    }
+    return max;
+}
