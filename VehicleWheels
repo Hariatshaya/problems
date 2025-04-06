@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class VehicleWheels {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt(); 
+
+        for (int t = 0; t < T; t++) {
+            int v = sc.nextInt(); 
+            int w = sc.nextInt(); 
+
+            // Total wheels must be even (no vehicle has odd number of wheels)
+            // And wheels must be between 2*v and 4*v
+            if (w % 2 != 0 || w < 2 * v || w > 4 * v) {
+                System.out.println("-1");
+                continue;
+            }
+
+            int fourWheelers = (w - 2 * v) / 2;
+            int twoWheelers = v - fourWheelers;
+
+            if (twoWheelers >= 0 && fourWheelers >= 0) {
+                System.out.println(twoWheelers + " " + fourWheelers);
+            } else {
+                System.out.println("-1");
+            }
+        }
+        sc.close();
+    }
+}
