@@ -1,0 +1,8 @@
+String oddBalloon(char[] balloons) {
+    Map<Character, Integer> freq = new HashMap<>();
+    for (char b : balloons) freq.put(b, freq.getOrDefault(b, 0) + 1);
+    for (char b : balloons)
+        if (freq.get(b) % 2 != 0)
+            return String.valueOf(b);
+    return "All are even";
+}
