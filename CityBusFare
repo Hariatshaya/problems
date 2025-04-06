@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class CityBusFare {
+
+    static String[] busStops = {"TH", "GA", "IC", "HA", "TE", "LU", "NI", "CA"};
+    static int[] path = {800, 600, 750, 900, 1400, 1200, 1100, 1500};
+
+    public static void getFare(String source, String destination) {
+        source = source.toUpperCase();
+        destination = destination.toUpperCase();
+
+        // Validate inputs
+        if (source.equals(destination)) {
+            System.out.println("INVALID OUTPUT");
+            return;
+        }
+
+        int srcIndex = -1, destIndex = -1;
+
+        for (int i = 0; i < busStops.length; i++) {
+            if (busStops[i].equals(source)) srcIndex = i;
+            if (busStops[i].equals(destination)) destIndex = i;
+        }
+
+        if (srcIndex == -1 || destIndex == -1) {
+            System.out.println("INVALID OUTPUT");
+            return;
+        }
+
+        int distance = 0;
+        int i = srcIndex;
+        while (i != destIndex) {
+            distance += path[i];
+            i = (i + 1) % path.length;
+        }
+
+        double fare = Math.ceil((distance / 1000.0) * 5);
+        System.out.printf("%.1f INR\n", fare);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String source = sc.nextLine();
+        String destination = sc.nextLine();
+        getFare(source, destination);
+    }
+}
