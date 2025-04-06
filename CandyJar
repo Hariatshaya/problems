@@ -1,0 +1,16 @@
+public class CandyJar {
+    public static void main(String[] args) {
+        int N = 10, K = 5;
+        int jar = N;
+        int input = 3; // Example input
+
+        if (input <= 0 || input > jar) {
+            System.out.println("INVALID INPUT");
+        } else {
+            jar -= input;
+            System.out.println("NUMBER OF CANDIES SOLD : " + input);
+            if (jar <= K) jar = N;
+            System.out.println("NUMBER OF CANDIES LEFT : " + jar);
+        }
+    }
+}
