@@ -1,0 +1,25 @@
+public class CaesarCipher {
+    public static void main(String[] args) {
+        String text = "All the best";
+        int key = 1;
+
+        if (key < 0 || key > 25) {
+            System.out.println("INVALID INPUT");
+            return;
+        }
+
+        StringBuilder encrypted = new StringBuilder();
+        for (char ch : text.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                char base = Character.isUpperCase(ch) ? 'A' : 'a';
+                encrypted.append((char) ((ch - base + key) % 26 + base));
+            } else if (Character.isDigit(ch)) {
+                encrypted.append((char) ((ch - '0' + key) % 10 + '0'));
+            } else {
+                encrypted.append(ch);
+            }
+        }
+
+        System.out.println("The encrypted Text is: " + encrypted);
+    }
+}
