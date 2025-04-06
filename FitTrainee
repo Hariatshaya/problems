@@ -1,0 +1,33 @@
+public class FitTrainee {
+    public static void main(String[] args) {
+        int[][] oxygen = {
+            {95, 92, 95},
+            {92, 90, 92},
+            {90, 92, 90}
+        };
+
+        int[] avg = new int[3];
+        for (int i = 0; i < 3; i++) {
+            int sum = 0;
+            for (int j = 0; j < 3; j++) {
+                int val = oxygen[j][i];
+                if (val < 1 || val > 100) {
+                    System.out.println("INVALID INPUT");
+                    return;
+                }
+                sum += val;
+            }
+            avg[i] = Math.round(sum / 3.0f);
+        }
+
+        int max = Math.max(avg[0], Math.max(avg[1], avg[2]));
+        if (max < 70) {
+            System.out.println("All trainees are unfit");
+        } else {
+            for (int i = 0; i < 3; i++) {
+                if (avg[i] == max)
+                    System.out.println("Trainee Number : " + (i + 1));
+            }
+        }
+    }
+}
