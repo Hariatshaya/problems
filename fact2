@@ -1,0 +1,16 @@
+public class fact2 {
+    public static int fact(int n){
+        int ans = n;
+        for(int i=n-1;i>0;i--){
+            int sum = 0;
+            for(int j=0;j<i;j++)
+                sum += ans;
+            ans = sum;
+        }
+        return ans;
+    }
+    public static void main (String[] args){
+        int n = 6;
+        System.out.println(fact(n));
+    }
+}
